@@ -1,0 +1,107 @@
+<section>
+  <header>
+    <div>
+      <h2>Employees List</h2>
+      <p>Add, filter, delete and search employees.</p>
+    </div>
+    <div>
+      <button type="button">Add Employee</button>
+    </div>
+  </header>
+  <div class="table-container">
+    <div class="pagination">
+      <label for="items-count">Employees per page: </label>
+      <select (change)="onSelectItemsPerPage($event)" id="items-count">
+        @for (choice of itemsPerPageChoices; track choice;) {
+        <option [value]="choice" [selected]="choice === itemsPerPageSelected">{{ choice }}</option>
+        }
+      </select>
+    </div>
+    <table>
+      <colgroup>
+        <col style="width: 12.5%;">
+        <col style="width: 12.5%;">
+        <col style="width: 20%;">
+        <col style="width: 10%;">
+        <col style="width: 15%;">
+        <col style="width: 10%;">
+        <col style="width: 15%;">
+        <col style="width: 5%;">
+      </colgroup>
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="handleNavigation()">
+          <th appSortBy="firstName">
+            <div class="sort-header">
+              <span>First Name</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th appSortBy="lastName">
+            <div class="sort-header">
+              <span>Last Name</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th appSortBy="email">
+            <div class="sort-header">
+              <span>Email</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th appSortBy="salary">
+            <div class="sort-header">
+              <span>Salary</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th appSortBy="dob">
+            <div class="sort-header">
+              <span>Date of Birth</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th appSortBy="age">
+            <div class="sort-header">
+              <span>Age</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th appSortBy="contactNumber">
+            <div class="sort-header">
+              <span>Contact Number</span>
+              <app-sort-svg></app-sort-svg>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of employees; track item.id) {
+        <tr>
+          <td [class.no-value]="!item.firstName">{{ item.firstName }}</td>
+          <td [class.no-value]="!item.lastName">{{ item.lastName }}</td>
+          <td [class.no-value]="!item.email">{{ item.email }}</td>
+          <td [class.no-value]="item.salary == null">{{ (item.salary | currency: "EUR": 'symbol': '1.0-0') }}</td>
+          <td [class.no-value]="item.dob == null">{{ item.dob }}</td>
+          <td [class.no-value]="item.age == null">{{ item.age }}</td>
+          <td [class.no-value]="item.contactNumber == null">{{ item.contactNumber }}</td>
+          <td>
+            <div class="btn-center">
+              <button (click)="deleteEmployee(item.id)" type=" button" class="delete-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" width="20"
+                  height="20" stroke="#ffffff">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div>
+
+</section>

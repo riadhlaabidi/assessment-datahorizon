@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --red-danger: #F20C36;
+  --dimmed-gray: #D9D9D9;
+  --gray: #777;
+}
+
+@font-face {
+  font-family: SUSE;
+  src: url('assets/fonts/SUSE-VariableFont_wght.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: SUSE;
+  src: url('assets/fonts/SUSE-VariableFont_wght.ttf');
+  font-weight: 600;
+}
+
+html {
+  font-family: SUSE;
+}
+
+body {
+  padding: 1rem;
+}

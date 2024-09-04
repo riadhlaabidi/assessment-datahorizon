@@ -1,0 +1,89 @@
+section {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  padding: 0 1.5rem;
+}
+
+table {
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+  font-weight: 600;
+
+  &:last-of-type {
+    text-align: center;
+  }
+}
+
+.sort-header {
+  display: flex;
+}
+
+th,
+td {
+  text-align: left;
+  padding: .75rem .5rem;
+  text-wrap: nowrap;
+}
+
+tr:not(:last-of-type) {
+  border-bottom: 1px solid var(--dimmed-gray);
+}
+
+.delete-btn {
+  border: none;
+  border-radius: .25rem;
+  background: none;
+  display: flex;
+  padding: 0;
+
+  & svg {
+    padding: .25rem;
+    stroke: #333;
+  }
+}
+
+.delete-btn:hover {
+  background-color: var(--red-danger);
+
+  & svg {
+    stroke: #fff;
+  }
+}
+
+.no-value::after {
+  color: var(--gray);
+  content: "---";
+}
+
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+
+  & label {
+    margin-right: 1rem;
+  }
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1400px) {
+  table {
+    table-layout: auto;
+  }
+}
